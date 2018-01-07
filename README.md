@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #SpringBlade java开发平台
 ## 平台简介
 SpringBlade是基于多个优秀的开源项目，将各个亮点设计融于一体的快速开发平台。构建稳定的生态圈，对各大底层框架无代码侵入。
@@ -260,3 +261,7 @@ SpringBlade不搞捐赠, 不打广告, 只做最单纯的开源项目
 `localhost:8080/blade/generate/sql/org.springblade.system.model.Menu`
 查看控制台打印结果,按自己需求复制粘贴到model和md文件中
 
+=======
+# Blade
+天弘建业
+>>>>>>> e2b0a1179291e87e1b5d72e498d58ea22b172b8e
