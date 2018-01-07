@@ -1,0 +1,188 @@
+@ layout("/common/_container.html"){
+<script type="text/javascript">
+	var ctx = "${ctxPath}";
+	var grid_selector = "#grid-table";
+	var pager_selector = "#grid-pager";
+	var _filter = "";//如果点了搜索按钮想让过滤条件失效,则将定义放入initGrid()中
+	
+	$(function(){
+		initGrid();
+		initother();
+	});
+
+	function initGrid(){
+		var grid_url = ctx + "/${code}/list";//查询列表接口
+		var _colnames=[ "序号","项目名称", "审批借款人", "审批借款期限", "审批借款金额", "审批综合利率", "合同号","操作"];
+		var _colmodel=[   {name:"id", index:"id",  hidden:true},
+						  {name:"item_name", index:"item_name", editable:true},
+						  {name:"approval_borrowers", index:"approval_borrowers", editable:true},
+						  {name:"approval_borrow_date", index:"approval_borrow_date", editable:true},
+						  {name:"approval_borrow_amount", index:"approval_borrow_amount", editable:true},
+						  {name:"approval_interest_rates", index:"approval_interest_rates", editable:true},
+						  {name:"contract_number", index:"contract_number", editable:true},
+						  {name:"caozuo", index:"caozuo", sortable : false}
+						];
+		
+		
+		jQuery(grid_selector).jqGrid({
+			url:grid_url,
+		    shrinkToFit:false,//适用于较少字段,响应式
+			colNames:_colnames,
+			colModel:_colmodel,
+			jsonReader:{id : "id"},
+			pager : pager_selector,
+			gridComplete:completeMethod,
+			postData: {where: _filter, sort: "id", order: "desc"}
+		});
+		jQuery(grid_selector).jqGrid('navGrid', pager_selector, {
+		    edit : false,
+		    add : false,
+		    del : false
+		  });
+
+	}
+	
+	/*统计功能 */    
+    function completeMethod(){    
+    	var strIds= jQuery(grid_selector).jqGrid("getDataIDs");
+        if(strIds.length>0){
+        	for(var i=0;i<strIds.length;i++){
+        		 var id=strIds[i];   
+                 modify = "<a href='#'  onclick='ModifyItem(" + id + ")'>修改</a>&nbsp;&nbsp;&nbsp;&nbsp;";  //这里的onclick就是调用了上面的javascript函数 Modify(id)
+                 del = "<a href='#'  onclick='delitem(" + id + ")' >删除</a>";
+        		jQuery(grid_selector).jqGrid('setRowData',strIds[i],{caozuo:modify+del});//设置单元格的值，需要行id，列名，以及对应列名的值
+        		
+        	}
+        }
+	}
+	
+	function delitem(id){
+		layer.confirm('是否确定删除信息？', {
+            icon: 3,
+            btn: ['删除', '取消'] //按钮
+        }, function () {
+            $.get(ctx + "/item/remove?ids="+id, function (data) {
+                if (data.code === 0) {
+                    layer_alert(data.message, "success");
+                    searchGrid();
+                    _this.initOther();
+                }
+                else {
+                	layer_post(data);
+                }
+            }, "json");
+
+        }, function () {
+        });
+        return;
+    }
+	
+
+
+	function ModifyItem(id){
+		  var width = window.top.$(window).width();
+	    	var height =  window.top.$(window).height();
+	    	
+	        width += "px";height += "px";
+    	layer.open({
+    	    type: 2,
+    	    title: '历史项目填报 → 项目信息维护',
+    	    area: [width, height],
+    	    fix: false, //不固定
+    	    maxmin: true,
+    	    content: ctx + "/item/edit?id="+id
+    	});
+    }
+
+
+
+	function initother() {
+		var button0 = document.createElement("button"); //创建一个button对象
+	    button0.innerHTML="添加";
+		button0.id="button0";
+		button0.style.marginLeft = "14px";
+	    //在DIV中添加按钮
+	    document.getElementById("btns").appendChild(button0);
+	    
+	    
+	    var button2 = document.createElement("button"); //创建一个button对象
+	    button2.innerHTML="删除";
+	    button2.id="button2";
+	    button2.style.marginLeft = "20px";
+	    //在DIV中添加按钮
+	    document.getElementById("btns").appendChild(button2);
+	  
+	    var width = window.top.$(window).width();;
+    	var height =  window.top.$(window).height();
+    	
+        width += "px";height += "px";
+	    
+		    $("#button0").bind("click",function(){
+		    	var index =layer.open({
+	        	    type: 2,
+	        	    title: '历史项目填报 → 添加项目信息',
+	        	    area: [width, height],
+	        	    fix: false, //不固定
+	        	    maxmin: true,
+	        	    content: ctx + "/item/add"
+	        	    //content: ctx + "/makenotice/add?item_code="+spt
+	        	});
+		    	
+		    	//window.location.href =ctx + "/cad/uploadAdd?task_code=";
+		    })
+		    
+		      $("#button2").bind("click",function(){
+		    	var ids =jQuery(grid_selector).jqGrid('getGridParam','selarrrow');
+		    	if (ids.length == 0) {
+	                layer_alert('请选择一条数据!', "warn");
+	                return;
+	            } layer.confirm('是否确定删除？', {
+	                icon: 3,
+	                btn: ['确定', '取消'] //按钮
+	            }, function () {
+	                $.get(ctx + "/item/remove?ids="+ids, function (data) {
+	                    if (data.code === 0) {
+	                        layer_alert(data.message, "success");
+	                        searchGrid();
+	                        _this.initOther();
+	                    }
+	                    else {
+	                    	layer_post(data);
+	                    }
+	                }, "json");
+
+	            }, function () {
+	                //layer.msg('已取消');
+	            });
+	            return;
+		    })
+		    
+		    
+	}
+
+
+</script>
+
+
+	<!-- 配置grid -->
+	<div class="row">	
+		<div class="col-xs-12 tb-grid">
+			<!-- 配置查询 -->
+			@ var _col=[
+			@		      {name:"合同号",index:"contract_number",type:"text"},
+			@			  {name:"项目名称",index:"item_name", type:"text"},
+			@			  {name:"申批借款人",index:"approval_borrowers", type:"text"}
+			@		   ];
+			@ include("/common/_function/_search_multi.html",{"col":_col}){}
+			<!-- 按钮组 -->
+			<div class="welljq well-sm" id="btns"></div>
+			<!-- grid -->
+			<table id="grid-table"></table>
+			<!-- 分页 -->
+			<div id="grid-pager"></div>
+		</div>
+	</div>
+	
+	<!-- 引入列表页所需js -->
+	@include("/common/_listscript.html"){}
+@}	

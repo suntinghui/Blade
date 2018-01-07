@@ -1,0 +1,34 @@
+@layout("/common/_container.html"){
+	<!-- PAGE CONTENT BEGINS -->
+	<form data-url="" method="post" class="form-horizontal" role="form">
+		<!-- 表单 -->
+		@ var _table="item_file";
+		@ var _col=[
+		@			  {name:"文件上传",index:"itemUrl", type:"fileupload",newline:true,length:8,returnType:"id"}
+		@		   ];
+		@ include("/common/_curd/_add_table.html",{"col":_col,"table":_table}){}
+		
+		<!-- 按钮 -->
+		<div class="clearfix form-actions center" style="margin-top:15px;margin-bottom:5px;">
+			<div class="col-md-offset-1 col-md-10">
+		<button class="btn" type="button" id="btn_close_file">
+					<i class="ace-icon fa fa-close bigger-110"></i>
+					关闭
+		</button>
+		</div>
+		</div>
+
+	</form>
+	
+	<script type="text/javascript">
+	var layerIndex = parent.layer.getFrameIndex(window.name); //获取窗口索引
+	$("#btn_close_file").bind("click",function(){
+		
+		parent.inittableGrid();
+		
+		parent.layer.close(layerIndex);
+	});
+	
+
+    </script>
+@}

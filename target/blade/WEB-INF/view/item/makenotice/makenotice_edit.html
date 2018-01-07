@@ -1,0 +1,135 @@
+@layout("/common/_container.html"){
+	<!-- PAGE CONTENT BEGINS -->
+	<form data-url="${ctxPath}/makenotice/update" method="post" class="form-horizontal" role="form">
+	<input type="hidden"  name="id" value="${makenotice.id}"/>	
+		<div class="space-4"></div>
+		<!-- #section:elements.form -->
+		<div class="form-group">
+			<label class="col-sm-2 control-label no-padding-right" > 借款人 </label>
+
+			<div class="col-sm-3">
+				<input type="text" name="borrower" style="width: 498px;" value="${makenotice.borrower}"  class="form-control" />
+			</div>
+			
+		</div>
+
+		<div class="form-group">
+			<label class="col-sm-2 control-label no-padding-right" > 融资平台 </label>
+			<div class="col-sm-3" align="center">	
+				<input type="radio" name="platform"  value="抱财"/>抱财&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="radio" name="platform"  value="抱金"/>抱金
+			</div>
+			
+			<label class="col-sm-2 control-label no-padding-right" > 合同号</label>
+
+			<div class="col-sm-3">
+				 <input type="text"  name="contract_number" class="form-control" value="${makenotice.contract_number}"  />
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="col-sm-2 control-label no-padding-right" > 借款金额 (元)</label>
+
+			<div class="col-sm-3">
+				<input type="text" id="" name="borrow_amount"  value="${makenotice.borrow_amount}" class="form-control" />
+			</div>
+			
+			<label class="col-sm-2 control-label no-padding-right" > 借款期限(月) </label>
+			<div class="col-sm-3">
+				<input type="text"  name="borrow_date"   value="${makenotice.borrow_date}" class="form-control"/>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="col-sm-2 control-label no-padding-right" > 放款时间 </label>
+			<div class="col-sm-3">
+				<input type="text" name="make_time" onclick="laydate({istime: true, format: 'YYYY-MM-DD'})"   value="${makenotice.make_time}" class="form-control" />
+			</div>
+			
+			<label class="col-sm-2 control-label no-padding-right" > 综合利率(%)</label>
+
+			<div class="col-sm-3">
+				<input type="text" name="interest_rates"   value="${makenotice.interest_rates}" class="form-control" />
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label class="col-sm-2 control-label no-padding-right" > 借款利率(%) </label>
+
+			<div class="col-sm-3">
+				<input type="text"   name="borrow_rates" value="${makenotice.borrow_rates}" class="form-control" />
+			</div>
+			
+			<label class="col-sm-2 control-label no-padding-right" > 融资利率(%) </label>
+			<div class="col-sm-3">
+				<input type="text" name="plat_rates"  value="${makenotice.plat_rates}" class="form-control" />
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2 control-label no-padding-right" > 借款用途 </label>
+
+			<div class="col-sm-3">
+			<textarea rows="" cols="" id="borrow_use" name="borrow_use" style="height: 60px;width: 498px;"  class="form-control"></textarea>
+			</div>
+			
+			
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2 control-label no-padding-right" > 还款来源 </label>
+
+			<div class="col-sm-3">
+				<textarea rows="" cols="" id="payments_source" name="payments_source" style="height: 60px;width: 498px;"  class="form-control"></textarea>
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2 control-label no-padding-right" > 联系人 </label>
+
+			<div class="col-sm-3">
+				<input type="text"   name="contact"  value="${makenotice.contact}" class="form-control" />
+			</div>
+			
+			<label class="col-sm-2 control-label no-padding-right" > 联系电话 </label>
+			<div class="col-sm-3">
+				<input type="text" name="phone"  value="${makenotice.phone}" class="form-control" />
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="col-sm-2 control-label no-padding-right" > 备注 </label>
+
+			<div class="col-sm-3">
+				<textarea rows="" cols="" id="remark" name="remark" style="height: 60px;width: 498px;" value="${makenotice.remark}" class="form-control"></textarea>
+			</div>
+		</div>
+		
+	
+		<script src="${ctxPath}/static/laydate/laydate.js"></script>	
+		<script type="text/javascript">
+			
+		</script>	
+		
+		<div class="space-4"></div>
+		<!-- 按钮 -->
+		@ include("/common/_curd/_btn.html",{btn_save:"保存",btn_close:"取消"}) {}
+	</form>
+<script type="text/javascript">
+$(function(){
+	$("#remark").val("${makenotice.remark!}");
+	$("#payments_source").val("${makenotice.payments_source!}");
+	$("#borrow_use").val("${makenotice.borrow_use!}");
+	getplatform();
+	
+});
+
+	function getplatform(){
+		var cboxsmark = document.getElementsByName("platform");
+		var str="${makenotice.platform!}";
+		if(str!=null){
+			for(var i=0;i<cboxsmark.length;i++){			
+				if(cboxsmark[i].value==str){
+					 cboxsmark[i].checked = true;
+				}
+			}
+		}
+	}
+</script>	
+
+@}
