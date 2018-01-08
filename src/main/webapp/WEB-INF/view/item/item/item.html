@@ -1,3 +1,4 @@
+
 @ layout("/common/_container.html"){
 <script type="text/javascript">
 	var ctx = "${ctxPath}";
@@ -26,7 +27,7 @@
 		
 		jQuery(grid_selector).jqGrid({
 			url:grid_url,
-		    shrinkToFit:false,//适用于较少字段,响应式
+		    shrinkToFit:true,//适用于较少字段,响应式
 			colNames:_colnames,
 			colModel:_colmodel,
 			jsonReader:{id : "id"},

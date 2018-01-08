@@ -27,10 +27,10 @@ public class ItemController extends BaseController {
 	private static String PREFIX = "item";
 	private static String LIST_SOURCE = "item.list";
 	private static String BASE_PATH = "/item/item/";
-	
+
 	@Autowired
 	ItemService service;
-	
+
 	@RequestMapping(KEY_MAIN)
 	public String index(ModelMap mm) {
 		mm.put("code", CODE);
@@ -57,11 +57,11 @@ public class ItemController extends BaseController {
 	@RequestMapping(KEY_VIEW + "/{id}")
 	public String view(@PathVariable Integer id, ModelMap mm) {
 		Item item = service.findById(id);
-		//将javabean转化为map
+		// 将javabean转化为map
 		CMap cmap = CMap.parse(item);
-		//使用SysCache.getDictName方法从缓存中获取对应字典项的中文值
-		//cmap.set("typename", SysCache.getDictName(102, item.getType()));
-		//将结果传回前台
+		// 使用SysCache.getDictName方法从缓存中获取对应字典项的中文值
+		// cmap.set("typename", SysCache.getDictName(102, item.getType()));
+		// 将结果传回前台
 		mm.put("model", JsonKit.toJson(cmap));
 		mm.put("id", id);
 		mm.put("code", CODE);
@@ -79,19 +79,10 @@ public class ItemController extends BaseController {
 	@RequestMapping(KEY_SAVE)
 	public AjaxResult save() {
 		Item item = mapping(PREFIX, Item.class);
-		boolean temp = service.save(item);
-		if (temp) {
-			ItemMapper mapper = Md.getMapper(ItemMapper.class);
-			Item itemId = mapper.selectItemByIdDesc();
-			Item itemmodel = mapper.selectItem(item.getItem_name(), item.getContract_number());
-			if(itemId !=null && itemmodel!=null){
-				if(itemId.getId().equals(itemmodel.getId())){
-					item.setId(itemId.getId());
-				}else{
-					item.setId(itemmodel.getId());
-				}
-			}
-			return successItem(SAVE_SUCCESS_MSG,item);
+		int temp = service.saveRtId(item);
+		if (temp > 0) {
+			item.setId(temp);
+			return successItem(SAVE_SUCCESS_MSG, item);
 		} else {
 			return error(SAVE_FAIL_MSG);
 		}
@@ -103,7 +94,7 @@ public class ItemController extends BaseController {
 		Item item = mapping(PREFIX, Item.class);
 		boolean temp = service.update(item);
 		if (temp) {
-			return successItem(UPDATE_SUCCESS_MSG,item);
+			return successItem(UPDATE_SUCCESS_MSG, item);
 		} else {
 			return error(UPDATE_FAIL_MSG);
 		}

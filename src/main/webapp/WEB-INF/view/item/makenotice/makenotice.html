@@ -15,22 +15,20 @@
 		var grid_url = ctx + "/makenotice/list?item_id="+$('#item_id').val();//查询列表接口
 		var _colnames=[ "序号","融资平台", "借款人", "借款期限", "借款金额", "合同号", "操作"];
 		var _colmodel=[   {name:"id", index:"id",  hidden:true},
-						  {name:"platform", index:"platform", editable:true,height:50},
-						  {name:"borrower", index:"borrower", editable:true},
-						  {name:"borrow_date", index:"borrow_date", editable:true},
-						  {name:"borrow_amount", index:"borrow_amount", editable:true},
-						  {name:"contract_number", index:"contract_number", editable:true},
-						  {name:"caozuo", index:"caozuo",  sortable : false, width:140}
+						  {name:"platform", index:"platform", editable:true, width:150, height:50},
+						  {name:"borrower", index:"borrower", editable:true, width:150},
+						  {name:"borrow_date", index:"borrow_date", editable:true, width:150},
+						  {name:"borrow_amount", index:"borrow_amount", editable:true, width:150},
+						  {name:"contract_number", index:"contract_number", editable:true, width:150},
+						  {name:"caozuo", index:"caozuo",  sortable : false, width:160}
 						];
-		
 		
 		jQuery(grid_selector).jqGrid({
 			url:grid_url,
-		    shrinkToFit:false,//适用于较少字段,响应式
+		    shrinkToFit:true,
 			colNames:_colnames,
 			colModel:_colmodel,
 			jsonReader:{id : "id"},
-			width : 500,
 			pager : pager_selector,
 			gridComplete:completeMethod,
 			postData: {where: _filter, sort: "id", order: "desc"}
@@ -42,6 +40,7 @@
 		  });
 
 	}
+	
 	
 	/*统计功能 */    
     function completeMethod(){    
@@ -83,7 +82,7 @@
 	
 	function modifyNotice(id){
 		var width =  "800";
-    	var height =  "400";
+    	var height =  "500";
     	var iframe_width = window.top.$(window).width();
     	var iframe_height = window.top.$(window).height();
     	var flag = (parseInt(width) >= iframe_width || parseInt(height) >= iframe_height) ? true : false; width += "px";height += "px";
