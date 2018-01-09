@@ -9,6 +9,12 @@
 	$(function(){
 		initGrid();
 		initother();
+		
+		var width = document.getElementById('_search_hidden').clientWidth;
+		document.getElementById('btns').style.width = width+'px';
+		document.getElementById('gbox_grid-table').style.width = width+'px';
+		document.querySelector('.ui-jqgrid-hdiv').style.width = width+'px';
+		document.getElementById('grid-pager').style.width=width+'px';
 	});
 
 	function initGrid(){
