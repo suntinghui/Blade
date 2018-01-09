@@ -1,5 +1,4 @@
-
-@ layout("/common/_container.html"){
+ @ layout("/common/_container.html"){
 <script type="text/javascript">
 	var ctx = "${ctxPath}";
 	var grid_selector = "#grid-table";
@@ -105,17 +104,19 @@
 
 	function initother() {
 		var button0 = document.createElement("button"); //创建一个button对象
-	    button0.innerHTML="添加";
+		button0.innerHTML="&nbsp;&nbsp;添加";
 		button0.id="button0";
-		button0.style.marginLeft = "14px";
+		button0.style.marginLeft = "15px";
+		button0.className="btn btn-xs btn-white | fa fa-floppy-o bigger-110";
 	    //在DIV中添加按钮
 	    document.getElementById("btns").appendChild(button0);
 	    
 	    
 	    var button2 = document.createElement("button"); //创建一个button对象
-	    button2.innerHTML="删除";
+	    button2.innerHTML="&nbsp;删除";
 	    button2.id="button2";
-	    button2.style.marginLeft = "20px";
+	    button2.style.marginLeft = "15px";
+	  	button2.className="btn btn-xs btn-white | fa fa fa-times bigger-110";
 	    //在DIV中添加按钮
 	    document.getElementById("btns").appendChild(button2);
 	  
@@ -169,6 +170,8 @@
 
 
 </script>
+
+
 
 
 	<!-- 配置grid -->

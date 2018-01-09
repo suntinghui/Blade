@@ -15,7 +15,7 @@
 					<tr>
 			 @ } else {
 				@	var display = (func.like(x.type,"hidden")) ? "style='display:none'" : "";
-				@   var placeholder = (!isEmpty(x.placeholder)) ? x.placeholder : ("暂无"+x.name);
+				@   var placeholder = (!isEmpty(x.placeholder)) ? x.placeholder : ("请输入"+x.name);
 				@	if(x.newline) {
 						<tr ${display!}>
 				@	}

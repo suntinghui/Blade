@@ -810,13 +810,18 @@ a.g-menu-item,a.soptclass,a.clearsearchclass {
 	font-size: 11px
 }
 
+#jqgh_grid-table1_cb {
+	text-align: center;
+	height:38px;
+}
+
 #jqgh_grid-table_cb {
 	text-align: center;
 	height:38px;
 }
 
 #jqgh_grid-table_cb input {
-	/* margin-top: -50px; */
+	/* margin-top: -50px; */	
 }
 
 ::-webkit-scrollbar {

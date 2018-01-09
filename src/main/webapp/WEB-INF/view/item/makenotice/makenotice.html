@@ -91,7 +91,6 @@
                 	layer_post(data);
                 }
             }, "json");
-
         }, function () {
         });
         return;
@@ -114,20 +113,19 @@
     	    content: ctx + "/makenotice/edit?id="+id
     	});
     }
-
-
-
 	function initnotice() {
 		var button0 = document.createElement("button"); //创建一个button对象
-	    button0.innerHTML="添加";
+	    button0.innerHTML="&nbsp;添加";
 		button0.id="button0";
+		button0.className="btn btn-xs btn-white | fa fa-floppy-o bigger-110";
 		button0.style.marginRight = "15px";
 	    //在DIV中添加按钮
 	    document.getElementById("btns2").appendChild(button0);
 	    
 	    var button2 = document.createElement("button"); //创建一个button对象
-	    button2.innerHTML="删除";
+	    button2.innerHTML="&nbsp;删除";
 	    button2.id="button2";
+	    button2.className="btn btn-xs btn-white | fa fa fa-times bigger-110";
 	    //在DIV中添加按钮
 	    document.getElementById("btns2").appendChild(button2);
 	  
@@ -172,14 +170,12 @@
 	                    	layer_post(data);
 	                    }
 	                }, "json");
-
 	            }, function () {
 	                //layer.msg('已取消');
 	            });
 	            return;
 		    })
 	}
-
 </script>
 
 
@@ -203,4 +199,3 @@
 	
 	<!-- 引入列表页所需js -->
 	@include("/common/_listscript.html"){}
-	

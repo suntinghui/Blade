@@ -28,7 +28,7 @@
 				
 					var val=obj.data.date1[i];
 					var tr=$('<tr class="ui-jqgrid-dnd tr td "></tr>');
-					tr.append('<td style="display:none";>'+ val.itemfileurl +'</td>' + '<td width="300px">'+ val.name + '</td>' +'<td width="150px">'+ val.creatername + '</td>'+'<td width="250px">'+ val.createtime + '</td>' + '<td width="100px"><a href="#" onclick="delitemfile(' + val.id + ')"  >删除</a>&nbsp;&nbsp;<a href="#" onclick="myfileload('+(i+1)+')">下载</a></td>');
+					tr.append('<td style="display:none";>'+ val.itemfileurl +'</td>' + '<td width="300px">'+ val.name + '</td>' +'<td width="150px">'+ val.creatername + '</td>'+'<td width="200px">'+ val.createtime + '</td>' + '<td width="100px"><a href="#" onclick="delitemfile(' + val.id + ')"  >删除</a>&nbsp;&nbsp;<a href="#" onclick="myfileload('+(i+1)+')">下载</a></td>');
 					tbody.append(tr);
 				}
 			  $('#grid-table tbody').replaceWith(tbody)
@@ -121,9 +121,9 @@
  	
  	function initfile() {
 		var button = document.createElement("button"); //创建一个button对象
-	    button.innerHTML="上传";
+	    button.innerHTML="&nbsp;选择文件";
 		button.id="button1";
-		button.class="btn btn-info";
+		button.className="btn btn-xs btn-white | fa fa-floppy-o bigger-110";
 	    //在DIV中添加按钮
 	    document.getElementById("btns1").appendChild(button);
 		
@@ -178,9 +178,9 @@
 
 		<div class="col-xs-9 tb-grid">
 			<!-- 按钮组 -->
-			<div class="welljq well-sm" id="btns1" style="width:850px;" align="right"></div>
+			<div class="welljq well-sm" id="btns1" style="width:100%;" align="left"></div>
 			<!-- grid -->
-			<table id="grid-table" class="table table-striped"  style="width:850px;">
+			<table id="grid-table" class="table table-striped"  style="width:100%;">
 			 <thead>
 				<tr>
 				    <th style="display:none;">隐藏列</th>

@@ -1,4 +1,4 @@
-@ layout("/common/_container.html"){
+ @ layout("/common/_container.html"){
 <script type="text/javascript">
 	var ctx = "${ctxPath}";
 	var grid_selector = "#grid-table";
@@ -8,8 +8,14 @@
 	$(function(){
 		initGrid();
 		initother();
+		
+		var width = document.getElementById('_search_hidden').clientWidth;
+		document.getElementById('btns').style.width = width+'px';
+		document.getElementById('gbox_grid-table').style.width = width+'px';
+		document.querySelector('.ui-jqgrid-hdiv').style.width = width+'px';
+		document.getElementById('grid-pager').style.width=width+'px';
 	});
-	
+
 	function initGrid(){
 		var grid_url = ctx + "/${code}/list";//查询列表接口
 		var _colnames=[ "序号","项目名称", "审批借款人", "审批借款期限", "审批借款金额", "审批综合利率", "合同号","操作"];
@@ -26,7 +32,7 @@
 		
 		jQuery(grid_selector).jqGrid({
 			url:grid_url,
-		    shrinkToFit:false,//适用于较少字段,响应式
+		    shrinkToFit:true,//适用于较少字段,响应式
 			colNames:_colnames,
 			colModel:_colmodel,
 			jsonReader:{id : "id"},
@@ -86,7 +92,7 @@
 	        width += "px";height += "px";
     	layer.open({
     	    type: 2,
-    	    title: '项目信息→修改项目信息',
+    	    title: '历史项目填报 → 项目信息维护',
     	    area: [width, height],
     	    fix: false, //不固定
     	    maxmin: true,
@@ -98,15 +104,19 @@
 
 	function initother() {
 		var button0 = document.createElement("button"); //创建一个button对象
-	    button0.innerHTML="添加";
+		button0.innerHTML="&nbsp;&nbsp;添加";
 		button0.id="button0";
+		button0.style.marginLeft = "15px";
+		button0.className="btn btn-xs btn-white | fa fa-floppy-o bigger-110";
 	    //在DIV中添加按钮
 	    document.getElementById("btns").appendChild(button0);
 	    
 	    
 	    var button2 = document.createElement("button"); //创建一个button对象
-	    button2.innerHTML="删除";
+	    button2.innerHTML="&nbsp;删除";
 	    button2.id="button2";
+	    button2.style.marginLeft = "15px";
+	  	button2.className="btn btn-xs btn-white | fa fa fa-times bigger-110";
 	    //在DIV中添加按钮
 	    document.getElementById("btns").appendChild(button2);
 	  
@@ -118,7 +128,7 @@
 		    $("#button0").bind("click",function(){
 		    	var index =layer.open({
 	        	    type: 2,
-	        	    title: '项目管理→添加项目信息',
+	        	    title: '历史项目填报 → 添加项目信息',
 	        	    area: [width, height],
 	        	    fix: false, //不固定
 	        	    maxmin: true,
@@ -160,6 +170,8 @@
 
 
 </script>
+
+
 
 
 	<!-- 配置grid -->

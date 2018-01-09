@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="4" failures="0" name="org.springblade.test.proxy.ProxyTest" time="1.706" errors="0" skipped="0">
+<testsuite tests="4" failures="0" name="org.springblade.test.proxy.ProxyTest" time="0.791" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/Library/Java/JavaVirtualMachines/jdk1.8.0_31.jdk/Contents/Home/jre/lib"/>
@@ -26,13 +26,13 @@
 "/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="os.name" value="Mac OS X"/>
-    <property name="classworlds.conf" value="/workspace/java/.metadata/.plugins/org.eclipse.m2e.launching/launches/m2conf1714298310274145742.tmp"/>
+    <property name="classworlds.conf" value="/workspace/java/.metadata/.plugins/org.eclipse.m2e.launching/launches/m2conf3013204681615579089.tmp"/>
     <property name="sun.jnu.encoding" value="UTF-8"/>
     <property name="java.library.path" value="/Users/sth/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:."/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.class.version" value="52.0"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
-    <property name="os.version" value="10.13.1"/>
+    <property name="os.version" value="10.13.2"/>
     <property name="user.home" value="/Users/sth"/>
     <property name="user.timezone" value="Asia/Harbin"/>
     <property name="java.awt.printerjob" value="sun.lwawt.macosx.CPrinterJob"/>
@@ -60,8 +60,8 @@
     <property name="sun.io.unicode.encoding" value="UnicodeBig"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="org.springblade.test.proxy.ProxyTest" name="testKit" time="1.417"/>
-  <testcase classname="org.springblade.test.proxy.ProxyTest" name="testCglib" time="0.287"/>
-  <testcase classname="org.springblade.test.proxy.ProxyTest" name="test" time="0.001"/>
+  <testcase classname="org.springblade.test.proxy.ProxyTest" name="testKit" time="0.629"/>
+  <testcase classname="org.springblade.test.proxy.ProxyTest" name="testCglib" time="0.158"/>
+  <testcase classname="org.springblade.test.proxy.ProxyTest" name="test" time="0.003"/>
   <testcase classname="org.springblade.test.proxy.ProxyTest" name="testCglibKit" time="0.001"/>
 </testsuite>

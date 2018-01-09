@@ -1,6 +1,6 @@
 		<div class="form-group" style="display:${display!'block'}">
 			<div class="col-sm-10" id="${id}_BTN">
-				<label class="control-label no-padding-right" id="${id}_upload" style="cursor:pointer;"><i class="fa fa-cloud-upload"></i>&nbsp;选择附件</label>			
+				<label class="control-label no-padding-right" id="${id}_upload" style="cursor:pointer;margin-Left:10px;margin-Top:10px;color:#286BA3;"><i class="fa fa-cloud-upload"></i>&nbsp;选择附件</label>			
 				<input type="hidden" id="${id}" data-type="fileupload" name="${name}"  value=""  class="form-control"/>
 			</div>
 		</div>
