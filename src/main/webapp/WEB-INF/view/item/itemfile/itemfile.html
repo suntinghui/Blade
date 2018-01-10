@@ -17,7 +17,7 @@
 		
 		$.ajax({
 			url:ctx+"/itemfile/queryItemFile",//查询列表接口
-			type:"get",
+			type:"post",
 			data:{ type: typevalue,item_id:$('#item_id').val()},
 			async: false,
 			success: function(data){
@@ -28,7 +28,7 @@
 				
 					var val=obj.data.date1[i];
 					var tr=$('<tr class="ui-jqgrid-dnd tr td "></tr>');
-					tr.append('<td style="display:none";>'+ val.itemfileurl +'</td>' + '<td width="300px">'+ val.name + '</td>' +'<td width="150px">'+ val.creatername + '</td>'+'<td width="200px">'+ val.createtime + '</td>' + '<td width="100px"><a href="#" onclick="delitemfile(' + val.id + ')"  >删除</a>&nbsp;&nbsp;<a href="#" onclick="myfileload('+(i+1)+')">下载</a></td>');
+					tr.append('<td style="display:none";>'+ val.itemfileurl +'</td>' + '<td width="300px">'+ val.name + '</td>' +'<td width="150px">'+ val.creatername + '</td>'+'<td width="200px">'+ val.createtime + '</td>' + '<td width="100px"><a href="#" onclick="delitemfile(' + val.id + ')"  >删除</a>&nbsp;&nbsp;<a href="#" onclick="myfileload('+(i+1)+')">查看</a></td>');
 					tbody.append(tr);
 				}
 			  $('#grid-table tbody').replaceWith(tbody)
@@ -42,7 +42,7 @@
 	function myfileload(tdid){
 		//第二种：用获取Table（通过其id），指定获取的行、列
         var valueTd=document.getElementById ("grid-table").rows[tdid].cells[0];
-        window.open(valueTd.innerText, "文件下载");
+        window.open(valueTd.innerText);
         return;
 	}
 	

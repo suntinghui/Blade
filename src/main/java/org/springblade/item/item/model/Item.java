@@ -33,11 +33,11 @@ public class Item extends BaseModel {
     /**
      * 审批借款金额
       */
-	private Integer approval_borrow_amount;
+	private Double approval_borrow_amount;
     /**
      * 审批综合利率
       */
-	private float approval_interest_rates;
+	private String approval_interest_rates;
     /**
      * 借款用途
       */
@@ -98,19 +98,19 @@ public class Item extends BaseModel {
 		this.approval_borrow_date = approval_borrow_date;
 	}
 
-	public Integer getApproval_borrow_amount() {
+	public Double getApproval_borrow_amount() {
 		return approval_borrow_amount;
 	}
 
-	public void setApproval_borrow_amount(Integer approval_borrow_amount) {
+	public void setApproval_borrow_amount(Double approval_borrow_amount) {
 		this.approval_borrow_amount = approval_borrow_amount;
 	}
 
-	public float getApproval_interest_rates() {
+	public String getApproval_interest_rates() {
 		return approval_interest_rates;
 	}
 
-	public void setApproval_interest_rates(float approval_interest_rates) {
+	public void setApproval_interest_rates(String approval_interest_rates) {
 		this.approval_interest_rates = approval_interest_rates;
 	}
 

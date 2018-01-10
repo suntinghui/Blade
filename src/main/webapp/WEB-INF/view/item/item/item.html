@@ -18,12 +18,12 @@
 
 	function initGrid(){
 		var grid_url = ctx + "/${code}/list";//查询列表接口
-		var _colnames=[ "序号","项目名称", "审批借款人", "审批借款期限", "审批借款金额", "审批综合利率", "合同号","操作"];
+		var _colnames=[ "序号","项目名称", "审批借款人", "审批借款期限", "审批借款金额(元)", "审批综合利率", "合同号","操作"];
 		var _colmodel=[   {name:"id", index:"id",  hidden:true},
 						  {name:"item_name", index:"item_name", editable:true},
 						  {name:"approval_borrowers", index:"approval_borrowers", editable:true},
 						  {name:"approval_borrow_date", index:"approval_borrow_date", editable:true},
-						  {name:"approval_borrow_amount", index:"approval_borrow_amount", editable:true},
+						  {name:"approval_borrow_amount", index:"approval_borrow_amount", editable:true, formatter: "currency", formatoptions: {thousandsSeparator:",",decimalSeparator:".", prefix:""}},
 						  {name:"approval_interest_rates", index:"approval_interest_rates", editable:true},
 						  {name:"contract_number", index:"contract_number", editable:true},
 						  {name:"caozuo", index:"caozuo", sortable : false}

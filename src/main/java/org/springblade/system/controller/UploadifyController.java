@@ -37,6 +37,7 @@ public class UploadifyController extends BladeController {
 		}
 		String originalFileName = file.getOriginalFilename();
 		String dir = getParameter("dir", "image");
+		/**
 		// 测试后缀
 		boolean ok = BladeFileKit.testExt(dir, originalFileName);
 		if (!ok) {
@@ -44,6 +45,7 @@ public class UploadifyController extends BladeController {
 			cmap.set("message", "上传文件的类型不允许");
 			return cmap;
 		}
+		***/
 		BladeFile bf = getFile(file);
 		bf.transfer();
 		Object fileId = bf.getFileId();	
