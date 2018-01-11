@@ -23,7 +23,6 @@
 			success: function(data){
 				var obj = eval("("+data+")");
 				var tbody=$('<tbody></tbody>');
-				//itemurl=obj.data.itemfileurl;
 				for(var i=0;i<obj.data.date1.length;i++){
 				
 					var val=obj.data.date1[i];
@@ -42,6 +41,7 @@
 	function myfileload(tdid){
 		//第二种：用获取Table（通过其id），指定获取的行、列
         var valueTd=document.getElementById ("grid-table").rows[tdid].cells[0];
+		//window.alert(valueTd.innerText);
         window.open(valueTd.innerText);
         return;
 	}

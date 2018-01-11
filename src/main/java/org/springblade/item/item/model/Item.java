@@ -33,7 +33,7 @@ public class Item extends BaseModel {
     /**
      * 审批借款金额
       */
-	private Double approval_borrow_amount;
+	private double approval_borrow_amount;
     /**
      * 审批综合利率
       */
@@ -98,11 +98,11 @@ public class Item extends BaseModel {
 		this.approval_borrow_date = approval_borrow_date;
 	}
 
-	public Double getApproval_borrow_amount() {
+	public double getApproval_borrow_amount() {
 		return approval_borrow_amount;
 	}
 
-	public void setApproval_borrow_amount(Double approval_borrow_amount) {
+	public void setApproval_borrow_amount(double approval_borrow_amount) {
 		this.approval_borrow_amount = approval_borrow_amount;
 	}
 

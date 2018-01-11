@@ -135,6 +135,7 @@ public class ItemFileController extends BaseController {
 		
 		List<Map> list1 =new ArrayList();
 		for (Map map : list) {
+			System.out.println("=========:"+map.get("url"));
 			map.put("itemfileurl", ConstConfig.DOMAIN + map.get("url"));
 			list1.add(map);
 		}
